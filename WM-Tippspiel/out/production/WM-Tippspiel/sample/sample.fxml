@@ -19,7 +19,7 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" text="Resultat eintragen" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Button mnemonicParsing="false" text="Resultat eintragen" GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#makeGuess"/>
       <Button mnemonicParsing="false" text="Spiel tippen" GridPane.rowIndex="1" />
    </children>
 </GridPane>
