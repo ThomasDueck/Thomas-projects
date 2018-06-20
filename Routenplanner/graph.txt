@@ -1,0 +1,1 @@
+{"nodes":0,"edges":8,"adjacency":[[{"from":"A","to":"B","distance":5}],[{"from":"B","to":"A","distance":5},{"from":"B","to":"C","distance":5}],[{"from":"C","to":"B","distance":5}]],"nameToID":{"A":0,"B":1,"C":2},"id":3}
