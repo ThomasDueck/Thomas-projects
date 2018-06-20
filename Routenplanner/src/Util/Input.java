@@ -6,6 +6,7 @@ import Network.Graph;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class Input {
 
@@ -45,10 +46,15 @@ public class Input {
                     if (commands.length == 3) {
                         String from = commands[1];
                         String to = commands[2];
-                        int result = Util.Algorithm.Djikstra(graph, from, to);
-                        if (result < Integer.MAX_VALUE)
-                            System.out.println("Die kürzeste Route von " + from + " zu " + to + " ist " + result + " lang");
-                        else
+                        ArrayList<Integer> result = Util.Algorithm.Djikstra(graph, from, to);
+                        if (result != null) {
+                            System.out.println("Die kürzeste Route von " + from + " zu " + to + " ist " + result.get(0) + " lang");
+                            for (int j = result.size() - 1; j > 0; j--) {
+                                if (j != 1) System.out.print(graph.idToName.get(result.get(j)) + " > ");
+                                else System.out.println(graph.idToName.get(result.get(1)));
+                            }
+
+                        } else
                             System.out.println(to + " ist von " + from + " leider nicht erreichbar");
                     } else {
                         System.out.println("Falsche Anzahl der Argumente");

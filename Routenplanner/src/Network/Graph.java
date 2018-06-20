@@ -8,7 +8,8 @@ public class Graph {
     public int nodes;
     public int edges;
     public ArrayList<Edge> adjacency[];
-    HashMap<String, Integer> nameToID;
+    public HashMap<String, Integer> nameToID;
+    public HashMap<Integer, String> idToName;
     public int id;
 
     public Graph(int edges, int nodes, int id) {
@@ -21,6 +22,7 @@ public class Graph {
             adjacency[i] = new ArrayList<Edge>();
         }
         nameToID = new HashMap<>();
+        idToName = new HashMap<>();
 
     }
 
@@ -30,6 +32,7 @@ public class Graph {
             adjacency[i] = new ArrayList<Edge>();
         }
         nameToID = new HashMap<>();
+        idToName = new HashMap<>();
     }
 
     public boolean addEdge(Edge edge) {
@@ -37,13 +40,16 @@ public class Graph {
         int fromID = checkID(edge.getFrom());
         if (fromID == -1) {
             fromID = this.id;
-            nameToID.put(edge.getFrom(), this.id++);
+            nameToID.put(edge.getFrom(), this.id);
+            idToName.put(this.id++, edge.getFrom());
+
             nodes++;
         }
         int toID = checkID(edge.getTo());
         if (toID == -1) {
             toID = this.id;
-            nameToID.put(edge.getTo(), this.id++);
+            nameToID.put(edge.getTo(), this.id);
+            idToName.put(this.id++, edge.getTo());
             nodes++;
         }
 
