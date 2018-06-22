@@ -1,6 +1,6 @@
-package Database;
+package Controller.Database;
 
-import Data.Team;
+import Model.Team;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static Database.SQLDriverConnection.connect;
+import static Controller.Database.SQLDriverConnection.connect;
 
 public class TeamsTable {
 
@@ -29,6 +29,15 @@ public class TeamsTable {
         } finally {
             return allTeams;
         }
+    }
+
+    public static ObservableList<String> getObservableMatchesName(){
+        ArrayList<Team> teams = getTeams();
+        ObservableList<String> teamList = FXCollections.observableArrayList();
+        for(Team t : teams){
+            teamList.add(t.getTeamname());
+        }
+        return teamList;
     }
 
     public static ObservableList<Team> getObservableMatches(){
