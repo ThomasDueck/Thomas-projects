@@ -1,0 +1,16 @@
+/*
+Pseudo class 'up' will change the row background
+ color to green when activated
+ */
+.table-row-cell:up
+{
+    -fx-background-color: lightgreen;
+}
+
+/*
+Pseudo class 'down' will change the row background
+color to red when activated
+*/
+.table-row-cell:down {
+    -fx-background-color: #A30029;
+}

@@ -4,6 +4,10 @@ import Model.Bet;
 import Model.Match;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +27,7 @@ public class BetTable {
             PreparedStatement stmt = SQLDriverConnection.conn.prepareStatement(sql);
             ResultSet betList = stmt.executeQuery();
             while (betList.next()) {
-                bets.add(new Bet(betList.getString(1), betList.getString(2), betList.getString(3), betList.getString(4), betList.getString(5)));
+                bets.add(new Bet(betList.getString(1), betList.getString(2), betList.getString(3), betList.getString(4), betList.getString(5), betList.getInt(6)));
             }
             SQLDriverConnection.conn.close();
         } catch (SQLException e) {
@@ -121,4 +125,41 @@ public class BetTable {
         }
         return obsBet;
     }
+
+
+    /**
+     * Deletes a result from the table results
+     * @param id - The id of a given match (unique)
+     * @return int - not 0 if success, 0 if no success
+     */
+    public static int deleteBet(int id){
+        SQLDriverConnection.connect();
+        String sql = "DELETE FROM BET WHERE bet_id = ?";
+        try {
+            PreparedStatement stmt = SQLDriverConnection.conn.prepareStatement(sql);
+            stmt.setInt(1,id);
+            int result = stmt.executeUpdate();
+            SQLDriverConnection.conn.close();
+            return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public static int deleteBetUser(String user){
+        SQLDriverConnection.connect();
+        String sql = "DELETE FROM Bet WHERE user = ?";
+        try {
+            PreparedStatement stmt = SQLDriverConnection.conn.prepareStatement(sql);
+            stmt.setString(1,user);
+            int result = stmt.executeUpdate();
+            SQLDriverConnection.conn.close();
+            return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
 }

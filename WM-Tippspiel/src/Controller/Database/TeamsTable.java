@@ -31,7 +31,7 @@ public class TeamsTable {
         }
     }
 
-    public static ObservableList<String> getObservableMatchesName(){
+    public static ObservableList<String> getObservableTeamNames(){
         ArrayList<Team> teams = getTeams();
         ObservableList<String> teamList = FXCollections.observableArrayList();
         for(Team t : teams){

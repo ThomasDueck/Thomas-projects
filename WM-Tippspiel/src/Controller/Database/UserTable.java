@@ -31,12 +31,44 @@ public class UserTable {
         }
     }
 
-    public static ObservableList<String> getObservableUser(){
+    public static ObservableList<String> getObservableUser() {
         ArrayList<Team> teams = getUser();
         ObservableList<String> teamList = FXCollections.observableArrayList();
-        for(Team t : teams){
+        for (Team t : teams) {
             teamList.add(t.getTeamname());
         }
         return teamList;
     }
+
+    public static int addUser(String user) {
+        connect();
+        String sql = "INSERT INTO User (user) VALUES (?)";
+        try {
+            PreparedStatement stmt = SQLDriverConnection.conn.prepareStatement(sql);
+            stmt.setString(1, user);
+            int res = stmt.executeUpdate();
+            SQLDriverConnection.conn.close();
+            return res;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public static int delUser(String user) {
+        connect();
+        String sql = "DELETE FROM User WHERE User = ?";
+        try {
+            PreparedStatement stmt = SQLDriverConnection.conn.prepareStatement(sql);
+            stmt.setString(1, user);
+            int res = stmt.executeUpdate();
+            SQLDriverConnection.conn.close();
+            return res;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+
 }

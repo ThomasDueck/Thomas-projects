@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 
 public class TextfieldListener {
 
-    public static TextField onlyNumbers(TextField txt){
+    public static TextField onlyNumbers(TextField txt) {
         txt.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,

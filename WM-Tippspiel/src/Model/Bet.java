@@ -12,7 +12,7 @@ public class Bet {
     public SimpleIntegerProperty id;
     public SimpleStringProperty user;
 
-    public Bet(){
+    public Bet() {
 
     }
 
@@ -32,7 +32,6 @@ public class Bet {
         this.id = new SimpleIntegerProperty(id);
         this.user = new SimpleStringProperty(user);
     }
-
 
 
     public String getHome() {
@@ -55,7 +54,7 @@ public class Bet {
         return id.get();
     }
 
-    public String getUser(){
+    public String getUser() {
         return user.get();
     }
 
@@ -79,7 +78,7 @@ public class Bet {
         this.id.set(id);
     }
 
-    public void setUser(String name){
+    public void setUser(String name) {
         this.user.set(name);
     }
 
