@@ -161,7 +161,13 @@ public class ButtonListener {
         add.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                if(!UserTable.checkUser(user.getText())){
+                if(user.getText().equals("")){
+                    DrawScene.setStatus(StatusMessages.EMPTYNAME);
+                }
+                else if(user.getText().length() >= 20){
+                    DrawScene.setStatus(StatusMessages.TOOLONGNAME);
+                }
+                else if(!UserTable.checkUser(user.getText())){
                     boolean succ = UserTable.addUser(user.getText());
                     userBox.setItems(UserTable.getObservableUser());
                     if(succ) DrawScene.setStatus(StatusMessages.USERADDED);

@@ -44,4 +44,5 @@ public class LayoutData {
     public static int PADDING = 10;
     public static int SPACING = 5;
     public static int PADDINGRIGHT = 50;
+    public static int MAXLENGTH = 3;
 }

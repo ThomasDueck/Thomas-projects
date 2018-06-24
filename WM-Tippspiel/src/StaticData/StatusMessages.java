@@ -20,4 +20,6 @@ public class StatusMessages {
     public static final String BETDELETED = "Bet successfully deleted";
     public static final String NOBETSELECTED = "Please select a bet";
     public static final String AGAINSTITSELF = "A team can not play against itself";
+    public static final String EMPTYNAME = "Name cannot be empty";
+    public static final String TOOLONGNAME = "Chosen Name is too long";
 }

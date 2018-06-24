@@ -1,5 +1,6 @@
 package Controller.Listener;
 
+import StaticData.LayoutData;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
@@ -19,6 +20,9 @@ public class TextfieldListener {
                                 String newValue) {
                 if (!newValue.matches("\\d*")) {
                     txt.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+                if(newValue.length() > LayoutData.MAXLENGTH){
+                    txt.setText(txt.getText().substring(0, LayoutData.MAXLENGTH));
                 }
             }
         });
