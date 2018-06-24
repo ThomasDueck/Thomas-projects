@@ -3,12 +3,13 @@ package View;
 import Controller.Listener.ButtonListener;
 import Model.Bet;
 import Model.Match;
+import StaticData.LayoutData;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 
 
-public class AddMatchGUI {
+public class AddTables {
 
 
     /**
@@ -26,23 +27,25 @@ public class AddMatchGUI {
         //Listener only allows for numbers in the box, so only valid input is allowed.
         TextField homeTeam = new TextField();
         TextField awayTeam = new TextField();
-        homeTeam.setMaxWidth(40);
-        awayTeam.setMaxWidth(40);
+        homeTeam.setMaxWidth(LayoutData.MAXWIDTH);
+        awayTeam.setMaxWidth(LayoutData.MAXWIDTH);
+        homeTeam.setText(LayoutData.PLACEHOLDERGOALS);
+        awayTeam.setText(LayoutData.PLACEHOLDERGOALS);
         awayTeam = Controller.Listener.TextfieldListener.onlyNumbers(awayTeam);
         homeTeam = Controller.Listener.TextfieldListener.onlyNumbers(homeTeam);
 
-        //Label for Layout
+        //Label for Layout purposes
         Label lbl = new Label();
-        lbl.setText(":");
+        lbl.setText(LayoutData.SEPARATOR);
 
         //Creating the Comboboxes for Hometeam, AwayTeam and Users. User is only needed for Bets.
         ComboBox<String> home = new ComboBox<>();
         ComboBox<String> away = new ComboBox<>();
         ComboBox<String> user = new ComboBox<>();
 
-        home.setPromptText("Home");
-        away.setPromptText("Away");
-        user.setPromptText("User");
+        home.setPromptText(LayoutData.PROMPTHOME);
+        away.setPromptText(LayoutData.PROMPTAWAY);
+        user.setPromptText(LayoutData.PROMPTUSER);
 
         away.setItems(Controller.Database.TeamsTable.getObservableTeamNames());
         home.setItems(Controller.Database.TeamsTable.getObservableTeamNames());
@@ -50,25 +53,23 @@ public class AddMatchGUI {
 
         //Create add Button. 0 corresponds to a Match, thus does not need user, and 1 corresponds Bet and needs
         //attribute user.
-        Button add = new Button();
-        if (mode == 0) {
-            add = new Button("Add Result");
+        Button add = new Button(LayoutData.ADD);
+        add.setStyle(LayoutData.OK);
+        if (mode == LayoutData.RESULT) {
             add = ButtonListener.generateListenerAddResult(add, tableMatch, home, homeTeam, awayTeam, away);
-        } else if (mode == 1) {
-            add = new Button("Add Bet");
+        } else if (mode == LayoutData.BET) {
             add = ButtonListener.generateListenerAddBet(add, tableBet, home, homeTeam, awayTeam, away, user);
         }
-
         //Finally, create a new HBox and return it.
         //Bets have the additional user ComboBox.
         HBox hbox = new HBox();
-        hbox.setPadding(new Insets(10, 0, 0, 0));
-        if (mode == 0) {
+        hbox.setPadding(new Insets(LayoutData.ADDMATCHPADDING, 0, 0, 0));
+        if (mode == LayoutData.RESULT) {
             hbox.getChildren().addAll(home, homeTeam, lbl, awayTeam, away, add);
-        } else if (mode == 1) {
+        } else if (mode == LayoutData.BET) {
             hbox.getChildren().addAll(home, homeTeam, lbl, awayTeam, away, user, add);
         }
-        hbox.setSpacing(10);
+        hbox.setSpacing(LayoutData.ADDMATCHSPACING);
         return hbox;
     }
 

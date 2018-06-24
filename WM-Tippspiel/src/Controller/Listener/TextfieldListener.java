@@ -6,6 +6,12 @@ import javafx.scene.control.TextField;
 
 public class TextfieldListener {
 
+    /**
+     * Adds a Listener to Textfields, so only numeric input is allowed.
+     *
+     * @param txt - Numeric Textfields
+     * @return Textfield - with appropriate Listener.
+     */
     public static TextField onlyNumbers(TextField txt) {
         txt.textProperty().addListener(new ChangeListener<String>() {
             @Override

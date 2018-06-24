@@ -1,13 +1,8 @@
 package Controller.Database;
 
 import Model.Bet;
-import Model.Match;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,8 +13,11 @@ import static Controller.Database.SQLDriverConnection.connect;
 
 public class BetTable {
 
+    /**
+     * Selects all Bets and saves them in a ArrayList<Bet>
+     * @return ArrayList<Bet>
+     */
     public static ArrayList<Bet> getResults() {
-
         connect();
         String sql = "SELECT * FROM BET;";
         ArrayList<Bet> bets = new ArrayList<>();
@@ -38,6 +36,16 @@ public class BetTable {
 
     }
 
+    /**
+     * Adds a new Bet to the Table Bet. Needs home, away, goals for both teams and a user who entered the bet.
+     *
+     * @param home  - Hometeamname
+     * @param goalH - Goals home
+     * @param goalA - Goals away
+     * @param away  - Awayteamname
+     * @param user  - User
+     * @return Boolean - true if success, false if not
+     */
     public static boolean addBet(String home, int goalH, int goalA, String away, String user) {
         connect();
         String sql = "INSERT INTO BET (home, away, estHome, estAway, user) VALUES (?, ?, ?, ?, ?)";
@@ -58,16 +66,28 @@ public class BetTable {
         }
     }
 
-    public static ObservableList<Bet> getObservableBets(){
+    /**
+     * Gets all Bets and adds them to an ObservableList<Bet>
+     *
+     * @return Observable<Bet>
+     */
+    public static ObservableList<Bet> getObservableBets() {
         ArrayList<Bet> bets = getResults();
         ObservableList<Bet> temp2 = FXCollections.observableArrayList();
-        for(Bet b : bets){
+        for (Bet b : bets) {
             temp2.add(b);
         }
         return temp2;
     }
 
-    public static ArrayList<Bet> getGameBets(String home, String away){
+    /**
+     * Selects all Bets to a certain game home vs. away
+     *
+     * @param home - Hometeamname
+     * @param away - Awayteamname
+     * @return ArrayList<Bet>
+     */
+    public static ArrayList<Bet> getGameBets(String home, String away) {
         connect();
         System.out.println(home);
         System.out.println(away);
@@ -78,18 +98,25 @@ public class BetTable {
             stmt.setString(2, away);
             ArrayList<Bet> bets = new ArrayList<Bet>();
             ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 bets.add(new Bet(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
             }
             return bets;
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
 
     }
 
-    public static ArrayList<Bet> exceptGame(String home, String away){
+    /**
+     * Selects all bets except bets to a certain game home vs. away
+     *
+     * @param home - Hometeamname
+     * @param away - Awayteamname
+     * @return ArrayList<Bet>
+     */
+    public static ArrayList<Bet> exceptGame(String home, String away) {
         connect();
         String sql = "SELECT * FROM BET EXCEPT SELECT * FROM BET WHERE home = ? AND away = ?;";
         try {
@@ -98,29 +125,43 @@ public class BetTable {
             stmt.setString(2, away);
             ArrayList<Bet> bets = new ArrayList<>();
             ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 bets.add(new Bet(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
             }
             return bets;
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public static ObservableList<Bet> getGameExceptFirst(String home, String away){
+    /**
+     * Get Bets of all Games except the one highlighted in the Results Table
+     *
+     * @param home - String of highlighted hometeam
+     * @param away - String of highlighted awayteam
+     * @return ObservableList<Bet> containing all Bets except from pair home vs. away
+     */
+    public static ObservableList<Bet> getGameExceptFirst(String home, String away) {
         ArrayList<Bet> bets = exceptGame(home, away);
         ObservableList<Bet> obsBet = FXCollections.observableArrayList();
-        for(Bet b : bets){
+        for (Bet b : bets) {
             obsBet.add(b);
         }
         return obsBet;
     }
 
-    public static ObservableList<Bet> getGameBetsFirst(String home, String away){
+    /**
+     * Get Bets to a certain pairing of a game.
+     *
+     * @param home - String of the hometeam
+     * @param away - String of the awayteam
+     * @return ObservableList<Bet> containing all Bets.
+     */
+    public static ObservableList<Bet> getGameBetsFirst(String home, String away) {
         ArrayList<Bet> bets = getGameBets(home, away);
         ObservableList<Bet> obsBet = FXCollections.observableArrayList();
-        for(Bet b : bets){
+        for (Bet b : bets) {
             obsBet.add(b);
         }
         return obsBet;
@@ -128,37 +169,46 @@ public class BetTable {
 
 
     /**
-     * Deletes a result from the table results
-     * @param id - The id of a given match (unique)
-     * @return int - not 0 if success, 0 if no success
+     * Deletes a bet from table bet
+     *
+     * @param id - The id of a given bet (unique)
+     * @return true if success, false otherwise
      */
-    public static int deleteBet(int id){
+    public static boolean deleteBet(int id) {
         SQLDriverConnection.connect();
         String sql = "DELETE FROM BET WHERE bet_id = ?";
         try {
             PreparedStatement stmt = SQLDriverConnection.conn.prepareStatement(sql);
-            stmt.setInt(1,id);
+            stmt.setInt(1, id);
             int result = stmt.executeUpdate();
             SQLDriverConnection.conn.close();
-            return result;
+            if(result > 0) return true;
+            else return false;
         } catch (SQLException e) {
             e.printStackTrace();
-            return 0;
+            return false;
         }
     }
 
-    public static int deleteBetUser(String user){
+    /**
+     * Deletes bets from a certain user from table bet
+     *
+     * @param user
+     * @return true if success, false otherwise
+     */
+    public static boolean deleteBetUser(String user) {
         SQLDriverConnection.connect();
         String sql = "DELETE FROM Bet WHERE user = ?";
         try {
             PreparedStatement stmt = SQLDriverConnection.conn.prepareStatement(sql);
-            stmt.setString(1,user);
+            stmt.setString(1, user);
             int result = stmt.executeUpdate();
             SQLDriverConnection.conn.close();
-            return result;
+            if(result > 0) return true;
+            else return false;
         } catch (SQLException e) {
             e.printStackTrace();
-            return 0;
+            return false;
         }
     }
 

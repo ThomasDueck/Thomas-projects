@@ -16,9 +16,9 @@ public class ResultsTable {
     /**
      * Deletes a result from the table results
      * @param id - The id of a given match (unique)
-     * @return int - not 0 if success, 0 if no success
+     * @return true if success, false otherwise
      */
-    public static int deleteResult(int id){
+    public static boolean deleteResult(int id){
         SQLDriverConnection.connect();
         String sql = "DELETE FROM results WHERE match_id = ?";
         try {
@@ -26,10 +26,11 @@ public class ResultsTable {
             stmt.setInt(1,id);
             int result = stmt.executeUpdate();
             SQLDriverConnection.conn.close();
-            return result;
+            if(result > 0) return true;
+            else return false;
         } catch (SQLException e) {
             e.printStackTrace();
-            return 0;
+            return false;
         }
     }
 

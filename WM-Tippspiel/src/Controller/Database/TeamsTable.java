@@ -8,11 +8,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static Controller.Database.SQLDriverConnection.connect;
 
 public class TeamsTable {
 
+    /**
+     * Select all Teams that exist and add them to an ArrayList<Team>
+     * @return ArrayList<Team>
+     */
     public static ArrayList<Team> getTeams() {
         connect();
         String sql = "SELECT * FROM Teams";
@@ -31,21 +36,18 @@ public class TeamsTable {
         }
     }
 
+    /**
+     * Get all TeamNames and add them to an ObservableList<String>
+     * @return ObservableList<String>
+     */
     public static ObservableList<String> getObservableTeamNames(){
         ArrayList<Team> teams = getTeams();
         ObservableList<String> teamList = FXCollections.observableArrayList();
         for(Team t : teams){
             teamList.add(t.getTeamname());
         }
+        Collections.sort(teamList);
         return teamList;
     }
 
-    public static ObservableList<Team> getObservableMatches(){
-        ArrayList<Team> teams = getTeams();
-        ObservableList<Team> teamList = FXCollections.observableArrayList();
-        for(Team t : teams){
-            teamList.add(t);
-        }
-        return teamList;
-    }
 }
