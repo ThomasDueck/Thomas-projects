@@ -1,6 +1,6 @@
-# Scorpiadin's Repository
+# Thomas' Repository
 
-This is the repository of Scorpiadin, which currently includes two projects I am working on.
+This is the repository of Thomas, which currently includes two projects I am working on.
 
 # Routenplanner
 Currently includes a routeplanner as a command line application, where edges and nodes can be added and deleted.
