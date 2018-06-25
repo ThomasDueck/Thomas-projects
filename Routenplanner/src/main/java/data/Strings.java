@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 public class Strings {
 
@@ -26,37 +26,25 @@ public class Strings {
 
 
 
-    //EXPLANATION - SUPPORTS COLORING IF COMMAND LINE SUPPORTS IT (IntelliJ, Unix Shell, Cygwin. Not CMD in Windows)
     public static final String HELP = "This is a command line route planer.\n" +
 
-            (char)27 + "[34mADD " + (char)27 + "[0m" +
-            (char)27 + "[32m<FROM> <TO> <DIST> " + (char)27 + "[0m" +
-            "- adds a new edge between FROM and TO with length DIST\n" +
+            "ADD <FROM> <TO> <DIST> - adds a new edge between FROM and TO with length DIST\n" +
 
-            (char)27 + "[34mDEL " + (char)27 + "[0m" +
-            (char)27 + "[32m<FROM> <TO> " + (char)27 + "[0m" +
-            "- deletes all edges between FROM and TO\n" +
+            "DEL <FROM> <TO> - deletes all edges between FROM and TO\n" +
 
-            (char)27 + "[34mROUTE " + (char)27 + "[0m" +
-            (char)27 + "[32m<FROM> <TO> " + (char)27 + "[0m" +
-            "- calculates shortest route between FROM and TO\n" +
+            "ROUTE <FROM> <TO> - calculates shortest route between FROM and TO\n" +
 
-            (char)27 + "[34mLISTEDGES " + (char)27 + "[0m" +
-            "- list all edges of current graph\n" +
+            "LISTEDGES - list all edges of current graph\n" +
 
-            (char)27 + "[34mLISTNODES " + (char)27 + "[0m" +
-            "- list all nodes of current graph\n" +
+            "LISTNODES - list all nodes of current graph\n" +
 
-            (char)27 + "[34mLOAD " + (char)27 + "[0m" +
-            (char)27 + "[32m<PATH> " + (char)27 + "[0m" +
-            "- Loads a graph from a file\n" +
+            "LOAD <PATH> - Loads a graph from a file\n" +
 
-            (char)27 + "[34mSAVE " + (char)27 + "[0m" +
-            (char)27 + "[32m<PATH> " + (char)27 + "[0m" +
-            "- Saves the graph to a file\n" +
+            "SAVE <PATH> - Saves the graph to a file\n" +
 
-            (char)27 + "[34mEND " + (char)27 + "[0m" +
-            "- ends the program";
+            "END - ends the program\n";
+
+
 
 
 }

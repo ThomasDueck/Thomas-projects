@@ -1,8 +1,8 @@
-package Util;
+package util;
 
-import Data.Strings;
-import Network.Edge;
-import Network.Graph;
+import data.Strings;
+import network.Edge;
+import network.Graph;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

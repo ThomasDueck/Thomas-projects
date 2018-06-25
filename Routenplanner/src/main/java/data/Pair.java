@@ -1,6 +1,4 @@
-package Data;
-
-import java.util.Comparator;
+package data;
 
 public class Pair implements Comparable<Pair> {
 

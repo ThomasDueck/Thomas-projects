@@ -6,9 +6,9 @@ public class SQLDriverConnection {
 
     protected static Connection conn = null;
     //Path for JAR
-    //static String URL = "jdbc:sqlite::resource:soccer.db";
+    static String URL = "jdbc:sqlite::resource:soccer.db";
     //Path for IDE
-    static String URL = "jdbc:sqlite:database/soccer.db";
+    //static String URL = "jdbc:sqlite:database/soccer.db";
 
     /**
      * Creates a connection to the database for queries

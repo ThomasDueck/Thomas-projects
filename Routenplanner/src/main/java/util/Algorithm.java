@@ -1,8 +1,7 @@
-package Util;
+package util;
 
-import Data.Pair;
-import Network.Edge;
-import Network.Graph;
+import data.Pair;
+import network.Graph;
 
 import java.util.*;
 
@@ -26,8 +25,8 @@ public class Algorithm {
         if (fromID == -1 || toID == -1) return null;
 
         //Initialize Priorityqueue for Djikstra, has current distance and Node-ID of the current node.
-        PriorityQueue<Data.Pair> queue = new PriorityQueue<>();
-        queue.add(new Data.Pair(0, fromID));
+        PriorityQueue<data.Pair> queue = new PriorityQueue<>();
+        queue.add(new data.Pair(0, fromID));
         Pair distances[] = new Pair[graph.nodes];
         Arrays.fill(distances, new Pair(Integer.MAX_VALUE, -1));
 
@@ -37,7 +36,7 @@ public class Algorithm {
         while (!queue.isEmpty()) {
 
             //Get the node with highest priority (lowest distance) from the queue
-            Data.Pair tempNode = queue.poll();
+            data.Pair tempNode = queue.poll();
             int currFrom = tempNode.getNode();
 
             //Traverse all neighbors of current node
@@ -50,7 +49,7 @@ public class Algorithm {
                 //to a neighbor node, if yes, insert into queue and save new smaller distance for neighbornode
                 if (distances[currFrom].getWeight() + dist < distances[neighbourNodeID].getWeight()) {
                     distances[neighbourNodeID] = new Pair(distances[currFrom].getWeight() + dist, currFrom);
-                    queue.add(new Data.Pair(distances[neighbourNodeID].getWeight(), neighbourNodeID));
+                    queue.add(new data.Pair(distances[neighbourNodeID].getWeight(), neighbourNodeID));
 
                 }
 

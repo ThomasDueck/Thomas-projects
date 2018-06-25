@@ -1,10 +1,9 @@
-package Util;
+package util;
 
-import Data.Strings;
-import Network.Edge;
-import Network.Graph;
+import data.Strings;
+import network.Edge;
+import network.Graph;
 
-import javax.print.DocFlavor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -132,7 +131,7 @@ public class Input {
             String to = commands[2];
 
             //Apply Djikstra and calculate shortestRoute
-            ArrayList<Integer> result = Util.Algorithm.Djikstra(graph, from, to);
+            ArrayList<Integer> result = util.Algorithm.Djikstra(graph, from, to);
 
             //If result = null, no solution is found. Otherwise output the route and the shortest distance
             if (result != null) {
@@ -156,9 +155,11 @@ public class Input {
      * @param commands
      */
     public static void saveGraph(Graph graph, String[] commands) {
-        if (commands.length >= 3) System.out.println(Strings.WRONGNUMBER);
-        Path path = Paths.get(commands[1]);
-        JSON.toFile(graph, path.toString());
+        if (commands.length != 2) System.out.println(Strings.WRONGNUMBER);
+        else{
+            Path path = Paths.get(commands[1]);
+            JSON.toFile(graph, path.toString());
+        }
 
 
     }
@@ -170,10 +171,12 @@ public class Input {
      * @param commands - Command Arguments
      */
     public static void loadGraph(Graph graph, String[] commands) {
-        if (commands.length >= 3) System.out.println(Strings.WRONGNUMBER);
-        boolean succ = graph.loadGraph(Paths.get(commands[1]).toString());
-        if (succ) System.out.println(Strings.GRAPHLOADED);
-        else System.out.println(Strings.PATHORGRAPHNOTVALID);
+        if (commands.length != 2) System.out.println(Strings.WRONGNUMBER);
+        else{
+            boolean succ = graph.loadGraph(Paths.get(commands[1]).toString());
+            if (succ) System.out.println(Strings.GRAPHLOADED);
+            else System.out.println(Strings.PATHORGRAPHNOTVALID);
+        }
     }
 
 }

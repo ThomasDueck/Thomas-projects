@@ -1,7 +1,7 @@
-package Network;
+package network;
 
-import Data.Strings;
-import Util.JSON;
+import data.Strings;
+import util.JSON;
 
 import java.util.ArrayList;
 import java.util.HashMap;
