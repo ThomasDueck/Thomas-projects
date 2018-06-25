@@ -1,6 +1,6 @@
-package Controller.Listener;
+package controller.listener;
 
-import StaticData.LayoutData;
+import staticData.LayoutData;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
@@ -8,10 +8,10 @@ import javafx.scene.control.TextField;
 public class TextfieldListener {
 
     /**
-     * Adds a Listener to Textfields, so only numeric input is allowed.
+     * Adds a listener to Textfields, so only numeric input is allowed.
      *
      * @param txt - Numeric Textfields
-     * @return Textfield - with appropriate Listener.
+     * @return Textfield - with appropriate listener.
      */
     public static TextField onlyNumbers(TextField txt) {
         txt.textProperty().addListener(new ChangeListener<String>() {

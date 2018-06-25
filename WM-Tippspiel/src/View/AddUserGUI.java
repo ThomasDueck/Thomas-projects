@@ -1,8 +1,8 @@
-package View;
+package view;
 
-import Controller.Listener.ButtonListener;
-import Model.Bet;
-import StaticData.LayoutData;
+import controller.listener.ButtonListener;
+import model.Bet;
+import staticData.LayoutData;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;

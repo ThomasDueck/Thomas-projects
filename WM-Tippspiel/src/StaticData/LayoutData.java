@@ -1,4 +1,4 @@
-package StaticData;
+package staticData;
 
 public class LayoutData {
     public static final String PLACEHOLDERGOALS = "0";

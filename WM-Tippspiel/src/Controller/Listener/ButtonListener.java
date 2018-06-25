@@ -1,12 +1,12 @@
-package Controller.Listener;
+package controller.listener;
 
-import Controller.Database.BetTable;
-import Controller.Database.ResultsTable;
-import Controller.Database.UserTable;
-import Model.Bet;
-import Model.Match;
-import StaticData.StatusMessages;
-import View.DrawScene;
+import controller.database.BetTable;
+import controller.database.ResultsTable;
+import controller.database.UserTable;
+import model.Bet;
+import model.Match;
+import staticData.StatusMessages;
+import view.DrawScene;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -18,7 +18,7 @@ public class ButtonListener {
 
 
     /**
-     * Adds a Listener to the Delete Bet Button and updates the Bet Table. Also deletes the Bet from the database
+     * Adds a listener to the Delete Bet Button and updates the Bet Table. Also deletes the Bet from the database
      *
      * @param del      - Button
      * @param tableBet - Table to be updated
@@ -45,7 +45,7 @@ public class ButtonListener {
     }
 
     /**
-     * Adds a Listener to the Delete Result Button and updates the Result Table. Also deletes the Result from the
+     * Adds a listener to the Delete Result Button and updates the Result Table. Also deletes the Result from the
      * database
      *
      * @param del        - Button
@@ -73,7 +73,7 @@ public class ButtonListener {
     }
 
     /**
-     * Adds the Listener to enter a valid Bet into the database. Needs the data from ComboBoxes and TextFields
+     * Adds the listener to enter a valid Bet into the database. Needs the data from ComboBoxes and TextFields
      * to also check if it is a valid action. Also adds the bet to the bet table.
      *
      * @param add       - Addbutton of Bet Table
@@ -83,7 +83,7 @@ public class ButtonListener {
      * @param awayTeam2 - Goals scored by awayteam
      * @param away      - Chosen awayteam
      * @param user      - User who entered the bet
-     * @return Button with added Listener
+     * @return Button with added listener
      */
     public static Button generateListenerAddBet(Button add, TableView<Bet> tableBet, ComboBox<String> home, TextField homeTeam2, TextField awayTeam2, ComboBox<String> away, ComboBox<String> user) {
         add.setOnAction(new EventHandler<ActionEvent>() {
@@ -112,7 +112,7 @@ public class ButtonListener {
     }
 
     /**
-     * Adds the Listener to enter a valid Matchresult into the database. Needs the data from ComboBoxes and TextFields
+     * Adds the listener to enter a valid Matchresult into the database. Needs the data from ComboBoxes and TextFields
      * to also check if it is a valid action. Also adds the match to the match table.
      *
      * @param add       - Addbutton of Bet Table
@@ -121,7 +121,7 @@ public class ButtonListener {
      * @param homeTeam2 - Goals scored by hometeam
      * @param awayTeam2 - Goals scored by awayteam
      * @param away      - Chosen awayteam
-     * @return Button with added Listener
+     * @return Button with added listener
      */
     public static Button generateListenerAddResult(Button add, TableView<Match> tableMatch, ComboBox<String> home, TextField homeTeam2, TextField awayTeam2, ComboBox<String> away) {
         add.setOnAction(new EventHandler<ActionEvent>() {
@@ -150,12 +150,12 @@ public class ButtonListener {
     }
 
     /**
-     * Generates a Listener to enter a user into the database. First checks if the user already exists
+     * Generates a listener to enter a user into the database. First checks if the user already exists
      * there cannot be two users with the same names. Updates the checkbox for inputing a bet to display a new user
      * @param add - Add User Button
      * @param user - Username
      * @param userBox - Combobox to be updated
-     * @return Button with added Listener
+     * @return Button with added listener
      */
     public static Button generateListenerAddUser(Button add, TextField user, ComboBox<String> userBox) {
         add.setOnAction(new EventHandler<ActionEvent>() {
@@ -191,7 +191,7 @@ public class ButtonListener {
      * @param user - Username
      * @param tableBet - TableBet
      * @param userBox - Combobox with users to be updated
-     * @return Button with added Listener
+     * @return Button with added listener
      */
     public static Button generateListenerDelUser(Button del, TextField user, TableView<Bet> tableBet, ComboBox<String> userBox) {
         del.setOnAction(new EventHandler<ActionEvent>() {

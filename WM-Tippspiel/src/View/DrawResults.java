@@ -1,11 +1,11 @@
-package View;
+package view;
 
-import Controller.Listener.ButtonListener;
-import Controller.Listener.TableListener;
-import Model.Bet;
-import Model.Match;
-import Controller.Database.ResultsTable;
-import StaticData.LayoutData;
+import controller.listener.ButtonListener;
+import controller.listener.TableListener;
+import model.Bet;
+import model.Match;
+import controller.database.ResultsTable;
+import staticData.LayoutData;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -53,7 +53,7 @@ public class DrawResults {
         del = ButtonListener.generateListenerDelResult(del, tableMatch);
         del.setStyle(LayoutData.CANCEL);
 
-        //Listener for more structure of Bets: All corresponding bets to a highlighted matches are grouped at the top.
+        //listener for more structure of Bets: All corresponding bets to a highlighted matches are grouped at the top.
         tableMatch = TableListener.addChangeListener(tableMatch,tableBet);
 
         //Finally add them to the Vbox which then gets added to the scene

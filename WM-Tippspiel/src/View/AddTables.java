@@ -1,9 +1,9 @@
-package View;
+package view;
 
-import Controller.Listener.ButtonListener;
-import Model.Bet;
-import Model.Match;
-import StaticData.LayoutData;
+import controller.listener.ButtonListener;
+import model.Bet;
+import model.Match;
+import staticData.LayoutData;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -24,15 +24,15 @@ public class AddTables {
     public static HBox addButton(int mode, TableView<Match> tableMatch, TableView<Bet> tableBet) {
 
         //Create the TextFields to insert Goals.
-        //Listener only allows for numbers in the box, so only valid input is allowed.
+        //listener only allows for numbers in the box, so only valid input is allowed.
         TextField homeTeam = new TextField();
         TextField awayTeam = new TextField();
         homeTeam.setMaxWidth(LayoutData.MAXWIDTH);
         awayTeam.setMaxWidth(LayoutData.MAXWIDTH);
         homeTeam.setText(LayoutData.PLACEHOLDERGOALS);
         awayTeam.setText(LayoutData.PLACEHOLDERGOALS);
-        awayTeam = Controller.Listener.TextfieldListener.onlyNumbers(awayTeam);
-        homeTeam = Controller.Listener.TextfieldListener.onlyNumbers(homeTeam);
+        awayTeam = controller.listener.TextfieldListener.onlyNumbers(awayTeam);
+        homeTeam = controller.listener.TextfieldListener.onlyNumbers(homeTeam);
 
         //Label for Layout purposes
         Label lbl = new Label();
@@ -47,9 +47,9 @@ public class AddTables {
         away.setPromptText(LayoutData.PROMPTAWAY);
         user.setPromptText(LayoutData.PROMPTUSER);
 
-        away.setItems(Controller.Database.TeamsTable.getObservableTeamNames());
-        home.setItems(Controller.Database.TeamsTable.getObservableTeamNames());
-        user.setItems(Controller.Database.UserTable.getObservableUser());
+        away.setItems(controller.database.TeamsTable.getObservableTeamNames());
+        home.setItems(controller.database.TeamsTable.getObservableTeamNames());
+        user.setItems(controller.database.UserTable.getObservableUser());
 
         //Create add Button. 0 corresponds to a Match, thus does not need user, and 1 corresponds Bet and needs
         //attribute user.

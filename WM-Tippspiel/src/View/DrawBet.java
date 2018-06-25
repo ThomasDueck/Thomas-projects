@@ -1,10 +1,10 @@
-package View;
+package view;
 
-import Controller.Database.BetTable;
-import Controller.Listener.ButtonListener;
-import Model.Bet;
-import Model.Match;
-import StaticData.LayoutData;
+import controller.database.BetTable;
+import controller.listener.ButtonListener;
+import model.Bet;
+import model.Match;
+import staticData.LayoutData;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;

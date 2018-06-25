@@ -1,6 +1,6 @@
-package Controller.Database;
+package controller.database;
 
-import Model.Team;
+import model.Team;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static Controller.Database.SQLDriverConnection.connect;
+import static controller.database.SQLDriverConnection.connect;
 
 public class TeamsTable {
 

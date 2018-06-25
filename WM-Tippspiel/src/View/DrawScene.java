@@ -1,8 +1,8 @@
-package View;
+package view;
 
-import Model.Bet;
-import Model.Match;
-import StaticData.LayoutData;
+import model.Bet;
+import model.Match;
+import staticData.LayoutData;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Group;
@@ -42,7 +42,7 @@ public class DrawScene {
         //Create the Tables beneath each other
         final HBox tablesHbox = new HBox(LayoutData.TABLESHBOXSPACING);
         tablesHbox.setSpacing(LayoutData.TABLESHBOXSPACING);
-        tablesHbox.getChildren().addAll(View.DrawResults.showResults(resultTable, betTable), View.DrawBet.showBets(resultTable, betTable));
+        tablesHbox.getChildren().addAll(view.DrawResults.showResults(resultTable, betTable), view.DrawBet.showBets(resultTable, betTable));
 
         //Creates an Anchorpane to insert the Boxes on to.
         AnchorPane pane = new AnchorPane();
@@ -66,7 +66,7 @@ public class DrawScene {
 
         //Create the mainVbox, with the order Tables and Usermenu. Set Margin to WIDTH/3 so it is roughly in the center
         final VBox mainVbox = new VBox(LayoutData.MAINVBOXSPACING);
-        HBox userMenu = View.AddUserGUI.editUserInterface(betTable, userCombobox);
+        HBox userMenu = view.AddUserGUI.editUserInterface(betTable, userCombobox);
         mainVbox.getChildren().addAll(tablesHbox, status, separator,  lblUser, userMenu);
         mainVbox.setMargin(userMenu, new Insets(0, 0, LayoutData.USERMENUPADDINGBOTTOM, LayoutData.CENTERUSERPANEL));
         mainVbox.setMargin(lblUser, new Insets(0, 0, 0, LayoutData.CENTERUSERPANEL));

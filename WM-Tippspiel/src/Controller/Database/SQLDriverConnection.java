@@ -1,4 +1,4 @@
-package Controller.Database;
+package controller.database;
 
 import java.sql.*;
 

@@ -1,6 +1,6 @@
-package Controller.Database;
+package controller.database;
 
-import Model.Match;
+import model.Match;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static Controller.Database.SQLDriverConnection.connect;
+import static controller.database.SQLDriverConnection.connect;
 
 public class ResultsTable {
 

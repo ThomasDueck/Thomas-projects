@@ -1,6 +1,6 @@
-package Main;
+package main;
 
-import View.DrawScene;
+import view.DrawScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

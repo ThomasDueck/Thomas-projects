@@ -1,4 +1,4 @@
-package StaticData;
+package staticData;
 
 public class StatusMessages {
 
