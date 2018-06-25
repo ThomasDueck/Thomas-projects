@@ -1,41 +1,48 @@
 package Util;
 
+import Data.Strings;
 import Network.Edge;
 import Network.Graph;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.*;
-import java.util.LinkedList;
 
 public class JSON {
 
 
+    /**
+     * Writes a JSON to a file with the help of GSON API
+     * @param graph - Graph to be saved
+     * @param path - Path of file
+     * @return True on success
+     */
     public static boolean toFile(Graph graph, String path) {
-        try (Writer writer = new FileWriter("./graph.txt")) {
+        try (Writer writer = new FileWriter(path)) {
             Gson gson = new GsonBuilder().create();
             if (gson != null) gson.toJson(graph, writer);
+            System.out.println(Strings.GRAPHSAVED);
         } catch (IOException e) {
-            System.out.println("Die Json konnte nicht in die Datei geschrieben werden.");
-            e.printStackTrace();
+            System.out.println(Strings.GRAPHNOTSAVED);
+            return false;
         }
 
         return true;
     }
 
+    /**
+     * Load a graph from a file with GSON API
+     * @param path - Path to file
+     * @return Returns Graph, or null if something went wrong.
+     */
     public static Graph fromFile(String path) {
         try {
             InputStreamReader reader = new FileReader(path);
             Gson gson = new GsonBuilder().create();
-            Data.JsonEdge edges = gson.fromJson(reader, Data.JsonEdge.class);
-            Graph graph = new Graph();
-            for (Edge tempEdge : edges.edgeList) {
-                graph.addEdge(tempEdge);
-            }
-            return graph;
-
+            Graph tempGraph = gson.fromJson(reader, Graph.class);
+            return tempGraph;
         } catch (IOException e) {
-            System.out.println("Der Graph konnte nicht erstellt werden.");
+            System.out.println(Strings.GRAPHNOTEXIST);
             return null;
         }
     }

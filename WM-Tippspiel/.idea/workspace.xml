@@ -117,8 +117,8 @@
       <file leaf-file-name="TableListener.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/Listener/TableListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+            <state relative-caret-position="578">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
             </state>
           </provider>
         </entry>
@@ -166,7 +166,6 @@
         <option value="$PROJECT_DIR$/CSS/style.css" />
         <option value="$PROJECT_DIR$/src/Main/Controller.java" />
         <option value="$PROJECT_DIR$/src/Main/Main.java" />
-        <option value="$PROJECT_DIR$/src/Controller/Listener/TableListener.java" />
         <option value="$PROJECT_DIR$/src/View/AddMatchGUI.java" />
         <option value="$PROJECT_DIR$/src/View/addTables.java" />
         <option value="$PROJECT_DIR$/src/res/style.css" />
@@ -185,6 +184,7 @@
         <option value="$PROJECT_DIR$/src/Controller/Listener/TextfieldListener.java" />
         <option value="$PROJECT_DIR$/src/StaticData/StatusMessages.java" />
         <option value="$PROJECT_DIR$/src/Controller/Listener/ButtonListener.java" />
+        <option value="$PROJECT_DIR$/src/Controller/Listener/TableListener.java" />
       </list>
     </option>
   </component>
@@ -430,7 +430,7 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33049947" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33049947" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="2" />
@@ -762,8 +762,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/Listener/TableListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+        <state relative-caret-position="578">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
